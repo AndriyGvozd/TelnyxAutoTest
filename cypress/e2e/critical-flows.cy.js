@@ -23,7 +23,9 @@ describe('Telnyx Website', () => {
     it('TC-03: Verify the "Pricing" dropdown menu is displayed', () => {
         cy.get('#radix-_R_16qcivb_').click();
 
-        cy.get('#main-menu-content > div').should('be.visible');
+        cy.get('#radix-_R_16qcivb_')
+            .should('have.attr', 'aria-expanded', 'true')
+            .and('have.attr', 'data-state', 'open');
     });
 
     it('TC-04: Log in button has correct href', () => { // Тут не поняв як вірно перевірити що відкривається нова вкладка, тому перевіряю href
