@@ -4,9 +4,9 @@ module.exports = defineConfig({
   projectId: "7otkbt",
   e2e: {
     baseUrl: "https://telnyx.com",
-    viewportWidth: 1920,
-    viewportHeight: 1080,
+    viewportWidth: 375,
+    viewportHeight: 812,
     defaultCommandTimeout: 8000,
-    specPattern: "cypress/e2e/critical-flows.cy.js",
+    specPattern: "cypress/e2e/responsive.cy.js",
   },
 });

@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:mobile": "cypress run --config-file cypress.mobile.config.js"
   },
+
   "keywords": [],
   "author": "",
   "license": "ISC",

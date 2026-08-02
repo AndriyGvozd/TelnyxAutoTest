@@ -8,17 +8,33 @@ on:
   workflow_dispatch:
 
 jobs:
-  cypress-run:
+  cypress-desktop:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run Cypress tests
+      - name: Run desktop critical-flow tests
         uses: cypress-io/github-action@v6
         with:
           record: true
           browser: chrome
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  cypress-mobile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run mobile responsive test
+        uses: cypress-io/github-action@v6
+        with:
+          record: true
+          browser: chrome
+          config-file: cypress.mobile.config.js
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
