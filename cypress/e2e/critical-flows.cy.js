@@ -31,8 +31,8 @@ describe('Telnyx Website', () => {
     });
 
     it('TC-05: Sign up button opens registration page', () => {
-        cy.get('a[href="/sign-up"]').click({multiple: true});
-        
+        cy.contains('span', 'Sign up').click();
+
         cy.url().should('include', '/sign-up');
     });
 
