@@ -99,5 +99,5 @@ Test run history and reports are available on Cypress Cloud:
 👉 [Telnyx Cypress Cloud Dashboard](https://cloud.cypress.io/projects/7otkbt/runs)
 
 ## 📌 Notes
-- `cypress.config.js` runs `critical-flows.cy.js` at a standard desktop viewport (1280×800).
+- `cypress.config.js` runs `critical-flows.cy.js` at a standard desktop viewport (1920x1080).
 - `cypress.mobile.config.js` runs `responsive.cy.js` at a mobile viewport (375×812), demonstrating a separate configuration for a different testing context.

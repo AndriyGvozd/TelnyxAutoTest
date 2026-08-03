@@ -1,69 +1,66 @@
+import HomePage from '../support/pageObjects/HomePage';
+
 describe('Telnyx Website', () => {
     beforeEach(() => {
         cy.viewport(1920, 1080);
-        cy.visit('https://telnyx.com');
+        HomePage.visit();
     });
 
     it('TC-01: Homepage loads successfully', () => {
-
-        cy.get('#hero-headline').should('have.text', 'Infrastructure for real-time agents');
+        HomePage.heroHeadline.should('have.text', 'Infrastructure for real-time agents');
     });
 
     it('TC-02: Clicking logo redirects to homepage', () => {
         cy.visit('https://telnyx.com/contact-us');
 
-        cy.get('header a[href="/"]')
-            .first()
-            .click();
+        HomePage.logoLink.click();
 
         cy.url().should('eq', 'https://telnyx.com/');
-        cy.get('#hero-headline').should('have.text', 'Infrastructure for real-time agents');
+        HomePage.heroHeadline.should('have.text', 'Infrastructure for real-time agents');
     });
 
     it('TC-03: Verify the "Pricing" dropdown menu is displayed', () => {
-        cy.get('#radix-_R_16qcivb_').click();
+        HomePage.pricingDropdown.click();
 
-        cy.get('#radix-_R_16qcivb_')
+        HomePage.pricingDropdown
             .should('have.attr', 'aria-expanded', 'true')
             .and('have.attr', 'data-state', 'open');
     });
 
     it('TC-04: Log in button has correct href', () => { // Тут не поняв як вірно перевірити що відкривається нова вкладка, тому перевіряю href
-        cy.get('a[href="https://portal.telnyx.com"]').should('be.visible').and('have.attr', 'href', 'https://portal.telnyx.com');
+        HomePage.loginLink.should('be.visible').and('have.attr', 'href', 'https://portal.telnyx.com');
     });
 
     it('TC-05: Sign up button opens registration page', () => {
-        cy.contains('span', 'Sign up').click();
+        HomePage.signupButton.click();
 
         cy.url().should('include', '/sign-up');
     });
 
     it('TC-06: Contact us button opens Contact page', () => {
-        cy.get('a[href="https://telnyx.com/contact-us"]')
-            .filter(':visible')
-            .click();
+        HomePage.contactUsLink.click();
 
         cy.url().should('include', '/contact-us');
     });
 
     it('TC-07: Talk to an expert button opens Contact page', () => {
-        cy.get('[data-content="TALK TO AN EXPERT"]').click();
+        HomePage.talkToExpertButton.click();
 
         cy.url().should('include', '/contact-us');
     });
 
     it('TC-08: Privacy Policy link has correct href', () => {
-        cy.get('footer').scrollIntoView();
+        HomePage.footer.scrollIntoView();
 
-        cy.get('a[href="/privacy-policy"]').click();
+        HomePage.privacyPolicyLink.click();
 
         cy.url().should('include', '/privacy-policy');
     });
 
     it('TC-09: LinkedIn link is correct', () => {
-        cy.get('footer').scrollIntoView();
+        HomePage.footer.scrollIntoView();
 
-        cy.get('footer a[href*="linkedin.com/company/telnyx"]')
+        HomePage.linkedInLink
             .should('have.attr', 'href')
             .and('include', 'linkedin.com/company/telnyx');
     });
