@@ -2,7 +2,6 @@ import HomePage from '../support/pageObjects/HomePage';
 
 describe('Telnyx Website', () => {
     beforeEach(() => {
-        cy.viewport(1920, 1080);
         HomePage.visit();
     });
 
