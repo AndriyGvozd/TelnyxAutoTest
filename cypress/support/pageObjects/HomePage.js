@@ -1,6 +1,6 @@
 class HomePage {
   visit() {
-    cy.visit('https://telnyx.com');
+    cy.visit('/');
     return this;
   }
 
@@ -13,7 +13,7 @@ class HomePage {
   }
 
   get pricingDropdown() {
-    return cy.get('#radix-_R_16qcivb_');
+    return cy.contains('button', 'Pricing');
   }
 
   get loginLink() {
@@ -21,7 +21,7 @@ class HomePage {
   }
 
   get signupButton() {
-    return cy.contains('span', 'Sign up');
+    return cy.contains('a', 'Sign up');
   }
 
   get contactUsLink() {
@@ -42,6 +42,10 @@ class HomePage {
 
   get linkedInLink() {
     return cy.get('footer a[href*="linkedin.com/company/telnyx"]');
+  }
+
+  get burgerMenu() {
+    return cy.get('button[aria-controls="main-menu-content"]');
   }
 }
 

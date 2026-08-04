@@ -26,12 +26,16 @@ describe('Telnyx Website', () => {
             .and('have.attr', 'data-state', 'open');
     });
 
-    it('TC-04: Log in button has correct href', () => { // Тут не поняв як вірно перевірити що відкривається нова вкладка, тому перевіряю href
-        HomePage.loginLink.should('be.visible').and('have.attr', 'href', 'https://portal.telnyx.com');
+    it('TC-04: Log in button has correct href', () => {
+        HomePage.loginLink
+            .invoke('removeAttr', 'target')
+            .click({multiple: true, force: true});
+
+        cy.url().should('include', 'portal.telnyx.com');
     });
 
     it('TC-05: Sign up button opens registration page', () => {
-        HomePage.signupButton.click();
+        HomePage.signupButton.first().click();
 
         cy.url().should('include', '/sign-up');
     });
